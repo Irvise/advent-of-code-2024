@@ -3,3 +3,9 @@
 
 # Ada Library Information
 *.ali
+
+#output file
+*main*
+
+#gprbuild folder
+*/obj
