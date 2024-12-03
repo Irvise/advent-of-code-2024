@@ -9,3 +9,6 @@ main
 
 #gprbuild folder
 */obj
+
+# emacs shit
+*~
