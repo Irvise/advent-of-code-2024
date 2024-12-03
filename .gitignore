@@ -5,7 +5,7 @@
 *.ali
 
 #output file
-*main*
+main
 
 #gprbuild folder
 */obj
