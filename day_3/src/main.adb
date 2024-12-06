@@ -22,9 +22,10 @@ procedure Main is
             
    A_VStr, B_Vstr : VString;
    Digs : constant Pattern := Span("0123456789");
-   Multiplicator_Pattern : constant Pattern := "mul(" & Digs ** A_VStr & ',' & Digs ** B_VStr & ')'; -- Please, read the documentation about GNAT.Spitbol.Patterns as found in g-spipat.ads
+   Multiplicator_Pattern : constant Pattern := "mul(" & Digs ** A_VStr & ',' & Digs ** B_VStr & ')';
+   -- Please, read the documentation about GNAT.Spitbol.Patterns as found in g-spipat.ads
    
-   --   Do_Or_Dont : Pattern := "don't()" & NSpan(Graphic_Set) & "do()" or Any(Control_Set);
+   -- Do_Or_Dont : Pattern := "don't()" & NSpan(Graphic_Set) & "do()" or Any(Control_Set);
    Eliminated_Content : VString;
    Do_Termination : Pattern := Arbno(Any(Graphic_Set)) ** Eliminated_Content & "do()";
    Do_Or_Dont : Pattern := "don't()" & Do_Termination; --  Any(Graphic_Set) ** Eliminated_Content ;
@@ -45,7 +46,7 @@ begin
       end loop;
       
       -- We may have a don't() which is not terminated by a do(), the line just ends, we need to clean those too
-      while Match(Input_Line, "don't()" & Arbno(Any(Graphic_Set)) ** Eliminated_Content, "") loop
+      while Match(Input_Line, "don't()" & Rest ** Eliminated_Content, "") loop
          pragma Debug(Put_Line("Eliminated content final: " & Eliminated_Content'Image));
          null;
       end loop;
